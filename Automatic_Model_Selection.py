@@ -4,7 +4,7 @@
 # Author         : 김은종
 # Origin_Date    : 05/11/2018
 # Revision_Date  : 05/14/2018
-# Version        : '0.2.1'
+# Version        : '0.1.2'
 
 
 import h2o
@@ -39,7 +39,7 @@ if response_type == 'binary':
 ### AutoML
 
 # Time to run the experiment
-run_automl_for_seconds = int(input("모델 시간을 입력해주세요.(s): "))
+run_automl_for_seconds = int(input("최대 허용 시간을 .(s): "))
 # TODO: try-catch
 
 # RUN AutoML
