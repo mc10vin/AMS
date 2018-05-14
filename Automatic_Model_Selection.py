@@ -13,11 +13,13 @@ from h2o.automl import H2OAutoML
 h2o.init()
 
 # load_file Definition Example
-df = h2o.import_file(path='C:/workspace/python/creditcard.csv', destination_frame="df")
+df = h2o.import_file(path="./Test/creditcard.csv", destination_frame="df")
 print(df.head())
 
-# Input parameters that are going to train
+# Input parameters that are going to train (Target)
 response_column = 'Amount'
+# response_column = 'Class'
+
 print(response_column)
 
 training_columns = df.columns.remove(response_column)
@@ -27,6 +29,10 @@ print(training_columns)
 
 # Split data into train and testing
 train, test = df.split_frame(ratios=[0.8])
+
+
+# For regression     --- default
+# For classification --- binary
 
 response_type = input("변수 형태를 입력해주세요. (default/binary): ")
 # TODO: try-catch
@@ -39,7 +45,7 @@ if response_type == 'binary':
 ### AutoML
 
 # Time to run the experiment
-run_automl_for_seconds = int(input("최대 허용 시간을 .(s): "))
+run_automl_for_seconds = int(input("최대 허용 시간을 입력해주세요. (s): "))
 # TODO: try-catch
 
 # RUN AutoML
@@ -61,9 +67,12 @@ print(aml.leader)
 pred = aml.predict(test_data=test)
 
 pred_df = pred.as_data_frame()
-pred_df.to_csv('C:/workspace/python/creditcard_result.csv', header=True, index=False)
+pred_df.to_csv('./Test/creditcard_result.csv', header=True, index=False)
 
-""" for version 0.3.1
+
+
+
+""" for version 0.2.1 (Automatic Feature Selection)
 
 
 if data==numerical:
