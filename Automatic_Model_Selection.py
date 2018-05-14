@@ -4,7 +4,7 @@
 # Author         : 김은종
 # Origin_Date    : 05/11/2018
 # Revision_Date  : 05/14/2018
-# Version        : '0.1.2'
+# Version        : '0.2.1'
 
 
 import h2o
@@ -63,27 +63,7 @@ pred = aml.predict(test_data=test)
 pred_df = pred.as_data_frame()
 pred_df.to_csv('C:/workspace/python/creditcard_result.csv', header=True, index=False)
 
-
-"""
-## Summary of the flights and weather dataset
-df.show()
-
-
-target = 'Class'
-y = df[target]
-
-split = df.runif()
-train = df[split <= 0.75]
-valid = df[split > 0.75]
-
-aml = H2OAutoML(max_runtime_secs = 30)
-aml.train(x = train.columns, y = target,
-          training_frame = train,
-          leaderboard_frame = valid)
-"""
-
-
-""" for version 0.2.1
+""" for version 0.3.1
 
 
 if data==numerical:
